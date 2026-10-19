@@ -1,0 +1,28 @@
+<idea-plugin>
+    <id>dev.openin</id>
+    <name>Open In</name>
+    <version>1.0.2</version>
+    <vendor>Open In</vendor>
+    <description><![CDATA[
+        Open selected Project view files and directories in macOS Terminal, iTerm2,
+        Ghostty, or your own applications and commands. Enable, disable and reorder
+        every application in Settings | Tools | Open In.
+    ]]></description>
+    <depends>com.intellij.modules.platform</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <postStartupActivity implementation="dev.openin.actions.OpenInStartupActivity"/>
+        <applicationConfigurable
+            id="dev.openin.settings"
+            parentId="tools"
+            displayName="Open In"
+            instance="dev.openin.ui.OpenInConfigurable"/>
+        <notificationGroup id="Open In" displayType="BALLOON" isLogByDefault="true"/>
+    </extensions>
+    <actions>
+        <group id="dev.openin.Applications"
+               class="dev.openin.actions.OpenInApplicationsGroup"
+               popup="false">
+            <add-to-group group-id="RevealGroup" anchor="last"/>
+        </group>
+    </actions>
+</idea-plugin>
